@@ -36,18 +36,32 @@
 
 <script>
 export default {
-  data() {
-    return {
-      name: 'Restaurant Name',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Phasellus nec iaculis mauris',
-      likes: 0,
-      category: 'burger',
-      slug: 'restaurant-name'
+  props: {
+    name: {
+      type: String,
+      default: ''
+    },
+    description: {
+      type: String,
+      default: ''
+    },
+    category: {
+      type: String,
+      default: ''
+    },
+    slug: {
+      type: String,
+      default: ''
+    },
+    likes: {
+      type: Number,
+      default: 0
     }
+
   },
   methods: {
     sumLikes() {
-      this.likes++
+      this.$emit('onLikeButton')
     }
   }
 }
