@@ -31,6 +31,7 @@ import Hero from "~/components/Hero"
 import Banner from "~/components/Banner"
 import Slogan from "~/components/Slogan"
 import api from "~/services/api"
+import { db }from "~/plugins/firebase"
 
 export default {
   components: {
@@ -39,20 +40,36 @@ export default {
     Banner,
     Slogan,
   },
-  async asyncData() {
-    try {
-      const { data } = await api.getRestaurants()
-      return { restaurants: data }
-    } catch (error) {
-      error({ statusCode: 404, message: "Restaurant not found" })
-    }
-  },
+  // async asyncData() {
+  //   try {
+  //     const { data } = await api.getRestaurants()
+  //     return { restaurants: data }
+  //   } catch (error) {
+  //     error({ statusCode: 404, message: "Restaurant not found" })
+  //   }
+  // },
   data() {
     return {
       likes: 0,
       showBanner: true,
       restaurants: [],
     }
+  },
+  created(){
+    const response = db.collection('restaurants').get()
+    response
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          const restaurant = {
+            id: doc.id,
+            ...doc.data()
+          }
+          this.restaurants.push(restaurant)
+        });
+      })
+      .catch(error => {
+        console.log(error)
+      })
   },
   methods: {
     async sumLikes(restaurant) {
