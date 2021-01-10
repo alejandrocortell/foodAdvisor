@@ -1,5 +1,24 @@
 # foodAdvisor
 
+Aplicación del curso sobre Nuxt de la plataforma OpenWebinars.
+
+## Características
+* Muestra los restaurantes existentes en la BD de firebase
+* Desde /admin, después de hacer login, permite editar y añadir restaurantes
+
+Es necesario rellenar los datos de la configuración de firebase en el archivo
+plugins/firebase.js Cambiar las siguientes líneas de código por las que proporciona
+firebase al crear un proyecto nuevo
+```
+const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
+};
+```
 ## Build Setup
 
 ```bash
