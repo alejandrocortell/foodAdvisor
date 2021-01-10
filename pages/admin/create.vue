@@ -1,5 +1,6 @@
 <template>
   <div class="section">
+    <button class="button" @click="back">Back</button>
     <div class="columns">
       <div class="column is-6 is-offset-3">
         <div class="columns">
@@ -164,6 +165,9 @@ export default {
         this.$router.back();
       });
     },
+    back() {
+      this.$router.back()
+    }
   },
 };
 </script>

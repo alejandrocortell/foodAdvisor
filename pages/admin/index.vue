@@ -8,6 +8,7 @@
       </div>
       <div class="table-container">
         <button class="button" @click="logout">Logout</button>
+        <button class="button" @click="createRestaurant">Create restaurant</button>
         <table class="table is-fullwidth is-bordered">
           <thead>
             <tr>
@@ -78,6 +79,9 @@ export default {
     logout() {
       firebase.auth().signOut()
       this.$router.push('/')
+    },
+    createRestaurant() {
+      this.$router.push('/admin/create')
     }
   },
 };
