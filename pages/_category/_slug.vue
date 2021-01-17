@@ -61,6 +61,15 @@
 import { db } from '~/plugins/firebase'
 
 export default {
+  head() {
+    return {
+      title: 'FoodAdvisor =>' + this.restaurant.name,
+      meta: [
+        { hid: 'description', name: 'description',
+        content: 'En este sitio encontrarás la descripción del restaurante'}
+      ]
+    }
+  },
   async asyncData({ params }) {
     const ref = db
       .collection('restaurants')

@@ -42,6 +42,15 @@ export default {
   components: {
     RestaurantCard,
   },
+  head() {
+    return {
+      title: 'FoodAdvisor =>' + this.$route.params.category,
+      meta: [
+        { hid: 'description', name: 'description',
+        content: 'En este sitio encontrarás la descripción del restaurante'}
+      ]
+    }
+  },
   async created() {
     await db
       .collection('restaurants')
